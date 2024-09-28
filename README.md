@@ -11,13 +11,13 @@ The purpose of this project was to determine whether a customer was going to sub
 - The two sections of modeling were split into looking for 1.) the recall score of the positive class to see how well the model was at identifying customers who were likely to subscribe the the term deposit product and 2.) precision for the positive class to see how well a seperate model would perform at identifying customers who were not likely to subscribe and thusly eliminating unnecessary call time.
 - Using Pycaret, models were looked at for recall and precision score with multiple sampling techniques used as well...RandomOversampler, SmoteTomek, SmoteENN
 - The models that performed the best on the best sampling technique were chosen to explore further:
-- First Model
+### First Model
 * Logistic Regression
 * Ridge Classifier
 * LinearDiscriminantAnalysis
 * GaussianNB
 * SGDClassifier (SMOTEenn)
-- Second Model
+### Second Model
 * LightGBM (SMOTEenn)
 * ExtraTreesClassifer (RandomOverSampler)
 
