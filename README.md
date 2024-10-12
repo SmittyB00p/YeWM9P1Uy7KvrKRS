@@ -8,7 +8,7 @@ The purpose of this project was to determine whether a customer was going to sub
 - Next was to look at the numerical features and see if there were any outliers or any correlations between feature that would constitute removing from the dataset. Only a few features seemed to have heavy outlier presence. As correlations between features was concerned, no noticable linear correlations were found, but exponential correlations between a few features were present and then explored.
 
 ## Modeling
-- The two sections of modeling were split into looking for 1.) the recall score of the positive class to see how well the model was at identifying customers who were likely to subscribe the the term deposit product and 2.) precision for the positive class to see how well a seperate model would perform at identifying customers who were not likely to subscribe and thusly eliminating unnecessary call time.
+- The two sections of modeling were split into looking for 1.) the recall score of the positive class to see how well the model was at identifying customers who were likely to subscribe the the term deposit product and 2.) a mix of precision and recall for the positive class as well as f1 macro score and the true negatives to see how well a seperate model would perform at identifying customers who were not likely to subscribe and thus reducing call time.
 - Using Pycaret, models were looked at for recall and precision score with multiple sampling techniques used as well...RandomOversampler, SmoteTomek, SmoteENN
 - The models that performed the best on the best sampling technique were chosen to explore further:
 ### First Model
@@ -21,15 +21,17 @@ The purpose of this project was to determine whether a customer was going to sub
 * LightGBM (SMOTEenn)
 * ExtraTreesClassifer (RandomOverSampler)
 
-- After using Optuna for hyperparameter tuning the SDGClassifier was then used to train on the whole, unsampled dataset where a ~90% recall score was achieved for the positive class
+- After using Optuna for hyperparameter tuning the SDGClassifier was then used to train on the whole, unsampled dataset where a ~90% recall score was achieved for the positive class which equates to roughly 130 hours of saved call time (using median call time)
 
-- After the same process the second model (LightGBM using SMOTEenn) achieved a 36% precision score for the positive class
+- After the same process the second model (LightGBM using SMOTEenn) achieved a 36% precision score for the positive class, over 80% for both classes and over 6500 false negatives resulting in over 330 hours of call time saved
 
-- After performing RecusiveFeatureElimination (RFE) and RFECV the same model was able to classify over 30% more false positives on half the features from the original dummied dataset 
+- After performing hierarchical and KMeans clustering, the customers that need to be prioritized are those who have secondary or tertiary education levels and those who have either technician or management jobs. The feature that makes the customer subscribe is their balance amount.
 
 ## Conclusion
-Using a SGDClassifier model with SMOTEenn for the oversampling technique the first section of modeling was able to classify customers who were likely to subscribe to the term deposit product at over a 90% rate
-The second section used a LightGBM model with SMOTEenn for the oversampling technique to achieve a reduction in call time for call center employees by nearly 60 hours while using half of the dataset's dummied features
+Using a SGDClassifier model with SMOTEenn for the oversampling technique the first section of modeling was able to classify customers who were likely to subscribe to the term deposit product at over a 90% rate resulting in over 130 hours saved
+The second section used a LightGBM model with SMOTEenn for the oversampling technique to achieve a reduction in call time for call center employees by nearly 300 hours
+The customers that need to be prioritized are those who have secondary or tertiary education level and those who have either technician or management jobs.
+The feature that makes the customer subscribe is their balance amount.
 
 # Set-up
 * python --version 3.9.13
