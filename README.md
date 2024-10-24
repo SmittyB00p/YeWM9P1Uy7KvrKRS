@@ -37,7 +37,7 @@ The purpose of this project was to determine whether a customer was going to sub
 ## Conclusion
 * Using a SGDClassifier model with SMOTEenn for the oversampling technique the first section of modeling was able to classify customers who were likely to subscribe to the term deposit product at over a 90% rate resulting in over 130 hours saved
 * The second section used a LightGBM model with SMOTETomek for the oversampling technique to achieve a reduction in call time for call center employees by nearly 300 hours
-* The customers that need to be prioritized are those who have secondary or tertiary education levels and those who have balances over $5,000.
+* The customers that need to be prioritized are those who have secondary or tertiary education levels and those who have balances over €5,000.
 * The feature that makes the customer subscribe is their balance amount.
 
 * An interactive dashboard using Tableau can be found at this link: https://public.tableau.com/app/profile/tyler.smith5879/viz/Term_Deposit_Dashboard/TermDepositStory
