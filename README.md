@@ -1,7 +1,7 @@
 # Term Deposit Marketing
 * A video of the final overview can be found at this link: https://www.youtube.com/watch?v=tyaM6dVxpLQ
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/tyaM6dVxpLQ?si=eBZkH6i635mNfhp1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## About the Dataset
 The purpose of this project was to determine whether a customer was going to subscribe to a term deposit product - a product that a bank offers that yields interest and is not accesible until the stipulated time period has ended, which can be from one month to a few years. The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign info that includes the last month that they contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
