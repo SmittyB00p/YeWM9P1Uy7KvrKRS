@@ -1,4 +1,4 @@
-# Term Deposit Marketing
+# Term Deposit Marketing Project
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ)
 
