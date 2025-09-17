@@ -44,7 +44,10 @@ The purpose of this project was to determine whether a customer was going to sub
 * An interactive dashboard using Tableau can be found at this link: https://public.tableau.com/app/profile/tyler.smith5879/viz/Term_Deposit_Dashboard/TermDepositStory
 
 # Set-up
-* python --version 3.9.13
-
-To get all the necessary packages run the command:
- - pip install -r requirements.txt
+* once in project directory you can run:
+    `python3.11 -m venv <NAME OF VIRTUAL ENVIRONEMNT>`
+* after that:
+    `source <NAME OF VIRTUAL ENVIRONEMNT>/bin/activate`
+* then, to get all the necessary packages run the command:
+    `pip install -r requirements.txt`
+* make sure to use a Python3.11.2 kernel for notebook usage
