@@ -2,10 +2,10 @@
 
 <!-- _includes/youtube.html -->
 
-
-
 ## About the Dataset
 The purpose of this project was to determine whether a customer was going to subscribe to a term deposit product - a product that a bank offers that yields interest and is not accesible until the stipulated time period has ended, which can be from one month to a few years. The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign info that includes the last month that they contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ)
 
 ## Objectives
 * Predict whether the customer will subscribe to the product
