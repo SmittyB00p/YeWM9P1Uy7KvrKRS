@@ -108,6 +108,7 @@ Coming Soon
 |---------------------|--------------------|-----------------|------------|-------------------|
 | LinearSVC (l2) w/   | Penalty (l1, l2),  | Train	0.855808 | 0.345118   | 372.6 hours       |
 | RandomOverSampler   | C                  | Test	0.853211 | 0.332856   |                   |
+|                     |                    |                 |            |                   |
 | Logistic Regression | Penalty (l1, l2),  | Train           |            |                   |
 |                     | C                  | Test 
 
