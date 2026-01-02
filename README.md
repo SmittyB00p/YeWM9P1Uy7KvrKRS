@@ -46,9 +46,9 @@ The next 5 features were related to the term deposit product campaign:
 * campaign
 
 The numerical feature of the campaign data, `day`, looked good. 31 days was the range of values. But the other two, `duration` and `campaign`, looked suspicious due to the fact that both features had very high max values: 
-    * `duration` had a max value that roughly equated to 80 minutes. This variable was 'the duration of the last call that the client made to this customer'.
+* `duration` had a max value that roughly equated to 80 minutes. This variable was 'the duration of the last call that the client made to this customer'.
 
-    * `campaign` had a max value of 58. This feature was 'the number of times the client called this customer during the entirety of the campaign'.
+* `campaign` had a max value of 58. This feature was 'the number of times the client called this customer during the entirety of the campaign'.
 
 After further inspection of the top handful of outlier in these features it looked to be possible that the max values reported could in fact be true. In regard to `duration`, I do not know that if being on the phone with someone for over an hour to pitch them on a product is likely, but since there was only two instances, I left them in the dataset. As for the `campaign` feature, there definitely could be a case where the client has been trying to reach someone, once a week for 11 months and finally in the twelfth month they reach the customer.
 
@@ -96,19 +96,20 @@ The modeling phase of the project is split into two sections:
 
 ![Mixed Sampling Models](/images/mixed_models.png)
 
-<!-- Using `Pycaret` different models were selected with different techniques to help with the imbalance in the target variable. It is clear that linear models with SMOTEEnn was providing the best recall scores.
+Using `Pycaret` different models were selected with different techniques to help with the imbalance in the target variable. Looking at the graphs the use of random oversampling or a combination of both over- and undersampling with a few different linear models was providing the best recall scores.
 
-Since most of the models are fairly the same in the way they try to find a decision boundary between classes I will experiment with `Logistic Regression` using both `l1` and `l2` normalization with SMOTEEnn as well as `LinearSVC` with `RandomOverSample` technique. -->
+Since most of the models are fairly the same in the way they try to find a decision boundary between classes I will experiment with `LinearSVC` using the RandomOverSampling technique as well as `Logistic Regression` with a SMOTEEnn technique.
 
 #### Results
 
 Coming Soon
 
-<!-- |          Model          |     Paramaters     |    Recall    |    Precision    |
-|-----------------------------------------------------------------------------------|
-| LinearSVC	              | Penalty (l1, l2),  |  .86         |   .34           |
-                            C                                                 
-| Logistic Regression     |  -->
+|        Model        | Tuned Paramaters   |        Recall   | Precision  | Call Time Saved   |
+|---------------------------------------------------------------------------------------------|
+| LinearSVC (l2) w/   | Penalty (l1, l2),  | Train	0.855808 | 0.345118   | 372.6 hours       |
+  RandomOverSampler     C                    Test	0.853211   0.332856                       
+<!-- | Logistic Regression | Penalty (l1, l2),  | Train
+                            C              | Test -->
 
 
 ### Post-Campaign Modeling
@@ -177,4 +178,4 @@ Coming Soon
 * to activate the virtual environment run the command: `source .venv/bin/activate`
 * to install the necessary packages run the command: `pip install -r requirements.txt`
 * use `.venv Python3.11.2` kernel for notebook usage
-* for reproducability use the seed ``
+* for reproducability use the seed `4701`
