@@ -105,7 +105,7 @@ Since most of the models are fairly the same in the way they try to find a decis
 Coming Soon
 
 |        Model        | Tuned Paramaters   |        Recall   | Precision  | Call Time Saved   |
-|---------------------------------------------------------------------------------------------|
+|---------------------|--------------------|-----------------|------------|-------------------|
 | LinearSVC (l2) w/   | Penalty (l1, l2),  | Train	0.855808 | 0.345118   | 372.6 hours       |
   RandomOverSampler     C                    Test	0.853211   0.332856                       
 <!-- | Logistic Regression | Penalty (l1, l2),  | Train
