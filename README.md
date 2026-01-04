@@ -58,7 +58,7 @@ After further inspection of the top handful of outlier in these features it look
 
 The countplot shows that the distribution is vastly skewed towards the customers who DID NOT subscribe. Because of this the metric that the client has asked to assess the model performance (accuracy 81%+) will not be a good metric to assess by. With no effort at all a null model will predict 93% accuracy, thus, worthless.
 
-A recall score (how many actual subscribers is the model finding), precision score (how many predicted subscribers actually subscribed), and f-1 score (the mean of precision and recall) will be apropos to this problem as well as experimenting with different techniques to deal with the imbalance in the dataset (SMOTETomek, RandomOverSample, SMOTENN).
+A recall score (how many actual subscribers is the model finding), precision score (how many predicted subscribers actually subscribed), and f-1 score (the mean of precision and recall) will be apropos to this problem as well as experimenting with different techniques to deal with the imbalance in the dataset (SMOTETomek, RandomOverSample, SMOTENN, Bagging).
 
 
 <!-- ### Correlations
@@ -100,18 +100,30 @@ Using `Pycaret` different models were selected with different techniques to help
 
 Since most of the models are fairly the same in the way they try to find a decision boundary between classes I will experiment with `LinearSVC` using the RandomOverSampling technique as well as `Logistic Regression` with a SMOTEEnn technique.
 
+Tree based models and ensembling techniques will be experimented with as well as balanced tree and ensemble techniques.
+
 #### Results
 
-Coming Soon
+|          Model         |  Tuned Paramaters  |        Recall    | Precision  | Call Time Saved   |
+|------------------------|--------------------|------------------|------------|-------------------|
+| Balanced Random Forest | n_estimators       | Train	1.000000 | 0.427105   | 383.82 hours      |
+| Classifier             | max_depth          | Test	0.891743 | 0.362957   |                   | 
+|                        |                    |                  |            |                   |
+| LinearSVC (l2) w/      | Penalty (l1, l2),  | Train	0.857143 | 0.344852   | 371.77 hours      |
+| RandomOverSampler      | C                  | Test	0.855046 | 0.331909   |                   |
+|                        |                    |                  |            |                   |
+| Logistic Regression    | Penalty (l1, l2),  | Train   0.872914 | 0.860573   | 294.67 hours      |
+| w/ SMOTEEnn            | C                  | Test    0.809174 | 0.229329   |                   |
+|                        |                    |                  |            |                   |
 
-|        Model        | Tuned Paramaters   |        Recall   | Precision  | Call Time Saved   |
-|---------------------|--------------------|-----------------|------------|-------------------|
-| LinearSVC (l2) w/   | Penalty (l1, l2),  | Train	0.855808 | 0.345118   | 372.6 hours       |
-| RandomOverSampler   | C                  | Test	0.853211 | 0.332856   |                   |
-|                     |                    |                 |            |                   |
-| Logistic Regression | Penalty (l1, l2),  | Train           |            |                   |
-|                     | C                  | Test 
+The results show that a `BalancedRandomForestClassifier` is performing the best out of the few models we tried.
 
+The call time saved is computed as: 
+    * (true negatives * mean call time of campaign) - (false positives * mean call time of campaign)
+
+If we substitute terms thus making it A - B, we can say that:
+* A = subscribers who are not going to subscribe (no need to waste the time)
+* B = subscribers who are NOT going to subscribe but predicted that they were (wasted call time)
 
 ### Post-Campaign Modeling
 
@@ -124,9 +136,17 @@ Coming Soon
 
 Coming Soon
 
-<!-- |            Model            |    Recall    |    Precision    |
-|--------------------------------------------------------------|
-| duration_minutes	          | 10431.901211 | 0.000000e+00    | -->
+<!-- |        Model        | Tuned Paramaters   |        Recall   | Precision  | Call Time Saved   |
+|---------------------|--------------------|-----------------|------------|-------------------|
+| LinearSVC (l2) w/   | Penalty (l1, l2),  | Train	0.857143 | 0.344852   | 371.77 hours      |
+| RandomOverSampler   | C                  | Test	0.855046 | 0.331909   |                   |
+|                     |                    |                 |            |                   |
+| Logistic Regression | Penalty (l1, l2),  | Train  0.872914 | 0.860573   | 294.67 hours      |
+|                     | C                  | Test   0.809174 | 0.229329   |                   |
+|                     |                    |                 |            |                   |
+| Balanced Bagging    |                    | Train	0.986204 | 0.455873   | 396.43 hours      |
+| Classifier          |                    | Test	0.856881 | 0.379366   |                   | 
+|                     |                    |                 |            |                   | -->
 
 
 
