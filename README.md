@@ -120,7 +120,7 @@ The results show that a `BalancedRandomForestClassifier` is performing the best 
 
 The call time saved is computed as: 
     
-    * (true negatives * mean call time of campaign) - (false positives * mean call time of campaign)
+    (true negatives * mean call time of campaign) - (false positives * mean call time of campaign)
 
 If we substitute terms thus making it A - B, we can say that:
 * A = subscribers who are not going to subscribe (no need to waste the time)
