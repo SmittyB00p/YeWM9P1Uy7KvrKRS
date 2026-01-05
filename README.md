@@ -1,12 +1,12 @@
-**Term Deposit Marketing Project**
+# Term Deposit Marketing Project
 The purpose of this project is to determine whether a customer is going to subscribe to a term deposit product - a product that a bank offers that yields interest and is not accesible until the stipulated time period has ended, which can be from one month to a few years. The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign information that includes the last month that the bank contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
 
 [![Term Deposit Video](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ)
 
-## Main Goal:
+### Main Goal:
 * Predict whether the customer will subscribe to the product, ideally reaching ~81% average accuracy score using 5-fold cross validation.
 
-## Secondary Goal:
+### Secondary Goal:
 * Find which customers are more likely to subscribe as well as determining which segments of the customers the bank should prioritize.
 
 * What makes the customers buy? Which feature should be focused on?
@@ -31,7 +31,7 @@ The first 8 features of the dataset are related to customer demographics:
 * housing
 * loan
 
-The numerical features `age` and `balance` looked to be correct as there was no one under the age of 19 and balances (in euros) were in the range of -8000 - 100,000+.
+The numerical features `age` and `balance` looked to be correct as there was no one under the age of 19 and balances (in euros) were in the range of -8,000 to 100,000+.
 
 The binary variables of `default`, `housing`, and `loan` were all correctly labeled as either having credit in default, a home loan, or personal loan or not.
 
@@ -58,30 +58,7 @@ After further inspection of the top handful of outlier in these features it look
 
 The countplot shows that the distribution is vastly skewed towards the customers who DID NOT subscribe. Because of this the metric that the client has asked to assess the model performance (accuracy 81%+) will not be a good metric to assess by. With no effort at all a null model will predict 93% accuracy, thus, worthless.
 
-A recall score (how many actual subscribers is the model finding), precision score (how many predicted subscribers actually subscribed), and f-1 score (the mean of precision and recall) will be apropos to this problem as well as experimenting with different techniques to deal with the imbalance in the dataset (SMOTETomek, RandomOverSample, SMOTENN, Bagging).
-
-
-<!-- ### Correlations
-Because the client wants to know the predictor that they should focus on different correlation methods were used to obtain a glimpse at what might be the most relevant predictors in the dataset.
-
-|             Feature            |    F-stat   |   p-value    |
-|-------------------------------------------------------------|
-| duration_minutes	             | 10431.901211| 0.000000e+00 |
-| month_3	                     | 705.764237  | 4.168074e-154|
-| month_10	                     | 349.453644  | 1.235608e-77 |
-| month_4	                     | 341.081820  | 7.920632e-76 |
-| contact_unknown	             | 289.082333  | 1.360355e-64 |
-| contact_cellular	             | 275.194708  | 1.373460e-61 |
-| marital_married	             | 129.768635  | 5.146244e-30 |
-| housing	                     | 117.994511  | 1.906511e-27 |
-| marital_single	             | 108.355956  | 2.427728e-25 |
-| education_tertiary	         | 85.615706   | 2.294716e-20 |
-| campaign	                     | 62.425346   | 2.840836e-15 |
-| job_student	                 | 56.675281   | 5.253134e-14 |
-| month_5	                     | 56.465990   | 5.842175e-14 |
-| month_2	                     | 52.045913   | 5.522056e-13 |
-| job_blue-collar	             | 43.843069   | 3.604778e-11 | -->
-
+A recall score (how many actual subscribers is the model finding), precision score (how many predicted subscribers actually subscribed), and f-1 score (the mean of precision and recall) will be apropos to this problem as well as experimenting with different techniques to deal with the imbalance in the dataset (SMOTETomek, RandomOverSample, SMOTENN, and Imbalanced Ensembling Techniques).
 
 ## Modeling
 The modeling phase of the project is split into two sections:
@@ -120,11 +97,11 @@ The results show that a `BalancedRandomForestClassifier` is performing the best 
 
 The call time saved is computed as: 
     
-    (true negatives * mean call time of campaign) - (false positives * mean call time of campaign)
+```(true negatives * mean call time of campaign) - (false positives * mean call time of campaign)```
 
 If we substitute terms thus making it A - B, we can say that:
-* A = subscribers who are not going to subscribe (no need to waste the time)
-* B = subscribers who are NOT going to subscribe but predicted that they were (wasted call time)
+* A = mean call time of true negative predictions (no need to waste the time calling)
+* B = mean call time of false positive predictions (wasted call time)
 
 ### Post-Campaign Modeling
 
