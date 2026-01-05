@@ -1,12 +1,12 @@
-# Term Deposit Marketing Project
+** Term Deposit Marketing Project **
 The purpose of this project is to determine whether a customer is going to subscribe to a term deposit product - a product that a bank offers that yields interest and is not accesible until the stipulated time period has ended, which can be from one month to a few years. The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign information that includes the last month that the bank contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
 
 [![Term Deposit Video](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ)
 
-Main Goal:
+## Main Goal:
 * Predict whether the customer will subscribe to the product, ideally reaching ~81% average accuracy score using 5-fold cross validation.
 
-Secondary Goal:
+## Secondary Goal:
 * Find which customers are more likely to subscribe as well as determining which segments of the customers the bank should prioritize.
 
 * What makes the customers buy? Which feature should be focused on?
