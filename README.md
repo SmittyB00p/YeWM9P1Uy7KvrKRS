@@ -1,5 +1,11 @@
 # Term Deposit Marketing Project
-The purpose of this project is to determine whether a customer is going to subscribe to a term deposit product - a product that a bank offers that yields interest and is not accesible until the stipulated time period has ended, which can be from one month to a few years. The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign information that includes the last month that the bank contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
+This project is aimed at assisting our client to provide machine learning solutions in the European banking market. Primarily, they work in fraud detection, sentiment classification and customer prediction and classification.
+
+Using information coming in from call centers, they are interested in developing machine learning systems that will **improve their sucess rate of calls made** to customers for any products that their clients offer.
+
+The purpose of this project is to determine whether a customer is going to subscribe to a term deposit product - a product that a bank offers that yields interest and is not accesible until the stipulated time period has ended, which can be from one month to a few years. 
+
+The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign information that includes the last month that the bank contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
 
 [![Term Deposit Video](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ)
 
@@ -13,9 +19,21 @@ The purpose of this project is to determine whether a customer is going to subsc
 
 ### A Brief Note on Project Structure
 
-This project is structured so that most of the exploratory data analysis, model selection, and model experimentation are housed in the `Notebooks` folder. Within the `Notebooks` folder the `Models` folder has the models used for experimentation and the `EDA` folder is where you will find the initial exploratory data analysis and the customer segementation task using unsupervised learning techniques.
+This project is structured so that most of the exploratory data analysis, model selection, and model experimentation are housed in the `Notebooks` folder. 
 
-<!-- The `Feature Importances` folder is for the final part of the project where we can visualize the most important features selected by the different models and to test the final model on the whole dataset. -->
+- Notebooks
+    |
+    - EDA
+        |
+        - eda.ipynb (initial data exploration)
+        - customer_segmentation.ipynb (unsupervised learning techniques looking for customer segments)
+    |
+    - Models (sequence of models looked at)
+        |
+        - svm.ipynb
+        - logistic_regression.ipynb
+        - ensemble.ipynb
+        - final_model.ipynb (final model testing)
 
 ## Exploratory Data Analysis
 Initially, looking for any missing values and changing data types of features for memory purposes was initiated. The data analysis was then split between demographic features and campaign features.
@@ -61,7 +79,11 @@ The countplot shows that the distribution is vastly skewed towards the customers
 A recall score (how many actual subscribers is the model finding), precision score (how many predicted subscribers actually subscribed), and f-1 score (the mean of precision and recall) will be apropos to this problem as well as experimenting with different techniques to deal with the imbalance in the dataset (SMOTETomek, RandomOverSample, SMOTENN, and Imbalanced Ensembling Techniques).
 
 ## Modeling
-The modeling phase of the project looked at a balance between high precision and high recall. If the recall and precision can be optimized then the call time will be reduced and a good amount of subscribers will be predicted.
+The modeling phase of the project is split into two sections:
+- find the highest recall and precision score using only demographic data
+- find the highest recall and precision score using the whole dataset
+
+### Demographic Modeling
 
 ![Demographic Models](/images/demographic_models.png)
 
@@ -75,7 +97,7 @@ Since most of the models are fairly the same in the way they try to find a decis
 
 Tree based models and ensembling techniques will be experimented with as well as balanced tree and ensemble techniques.
 
-### Results
+#### Results
 
 |          Model         |  Tuned Paramaters  |        Recall    | Precision  | Call Time Saved   |
 |------------------------|--------------------|------------------|------------|-------------------|
@@ -89,7 +111,7 @@ Tree based models and ensembling techniques will be experimented with as well as
 | w/ SMOTEEnn            | C                  | Test    0.809174 | 0.229329   |                   |
 |                        |                    |                  |            |                   |
 
-The results show that a `BalancedRandomForestClassifier` is performing the best out of the few models that were tested.
+The results show that a `BalancedRandomForestClassifier` is performing the best out of the few models we tried.
 
 The call time saved is computed as: 
     
@@ -99,17 +121,13 @@ If we substitute terms thus making it A - B, we can say that:
 * A = mean call time of true negative predictions (no need to waste the time calling)
 * B = mean call time of false positive predictions (wasted call time)
 
+**The main take away from this section is that we have saved call center employees close to 400 hours of time by identifying which customers will and will not subscribe to the term-deposit product.**
+
 ## Customer Segmentation
 
 The secondary objective of this project was to find "which customers are more likely to subscribe as well as determining which segments of the customers the bank should prioritize." In trying to find said segments I needed to scale the dataset and then perform principle component analysis (PCA) on the one-hot-encoded dataset that I used for modeling.
 
 Results from the PCA are below:
-
-![PCA](/images/pca.png)
-
-Not all combinations of the principle components are plotted against each other, but from the plots we do not see a clear cluster of subscribers and non-subscribers.
-
-Since no clear clusters were present I used hierarchical clustering to see if any clusters emerged. Because of the size of the dataset I had to use a small enough sample to get an idea of clusters as seen below.
 
 ![PCA](/images/dendrogram.png)
 
@@ -133,22 +151,32 @@ The final step was to look at the whole dataset and obtain a label for each cust
 |              0                |  12047  |  4222   |  12673  |  6601   |
 |              1                |	508	  |   625   |   1287  |   372   |
 
-The table shows that cluster 2 has the most subscribers of any of the other three groups. On a relative basis, group 1 has the biggest percentage of subscribers at 14.8%, followed by group 2 at 10.2%, then group3 at 5.6% and lastly group 0 at over 4%.
+The table shows that cluster 2 has the most subscribers of any of the other three groups. On a relative basis, group 1 has the biggest percentage of subscribers at 14.8%, followed by group 2 at 10.2%, then group 3 at 5.6% and lastly group 0 at over 4%.
 
-Focusing of segments 1 and 2 are suggested since the subscription rate in these two groups are above the average subscription rate of 7%.
+Focusing on segments 1 and 2 are suggested since the subscription rate in these two groups are above the average subscription rate of 7%.
 
-### Results
-
-
-
-
-- After performing hierarchical and KMeans clustering, the customers that need to be prioritized are those who have secondary or tertiary education levels and those who have either technician or management jobs. 
-
-- The feature that is the best indicator of customer subscription is their balance amount. -->
 
 ## Conclusion
 
-Coming Soon
+Main goal:
+
+* Predict whether the customer will subscribe to the product, ideally reaching ~81% average accuracy score using 5-fold cross validation.
+
+Achieved:
+
+* Since the dataset was imbalanced the accuracy metric was not going to be the metric to use in assessing model performance. Using a mix of precision and recall we were able to tune a `BalancedRandomForestClassifier` to obtain a test recall score of 89% and a test precision score of 36%. Thusly reducing call time for call center employees by roughly 383 hours.
+
+Secondary Goal:
+
+* Find which customers are more likely to subscribe as well as determining which segments of the customers the bank should prioritize.
+
+* What makes the customers buy? Which feature should be focused on?
+
+Achieved: 
+
+* Using different unsupervised learning techniques I was able to segment the customers into 4 different groups which gave us a lead into which groups were to be prioritized. Groups 1 and 2 look to be the groups to prioritize since their average subscription rates are significantly higher than the total average subscription rate. 
+
+* In regards to which feature makes the customers subscribe there is not a definitive answer that sticks out when looking at the features when grouped by each customer segment. Further exploration might need to be done to understand which features are playing a more integral role than others.
 
 
 * An interactive dashboard using Tableau can be found at this link: https://public.tableau.com/app/profile/tyler.smith5879/viz/Term_Deposit_Dashboard/TermDepositStory
