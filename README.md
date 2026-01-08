@@ -21,7 +21,8 @@ The data contains customer demographics such as age, marital status, job, balanc
 
 This project is structured so that most of the exploratory data analysis, model selection, and model experimentation are housed in the `Notebooks` folder. 
 
-```- Notebooks
+```
+- Notebooks
     |
     - EDA
         |
@@ -33,7 +34,8 @@ This project is structured so that most of the exploratory data analysis, model 
         - svm.ipynb
         - logistic_regression.ipynb
         - ensemble.ipynb
-        - final_model.ipynb (final model testing)```
+        - final_model.ipynb (final model testing)
+```
 
 ## Exploratory Data Analysis
 Initially, looking for any missing values and changing data types of features for memory purposes was initiated. The data analysis was then split between demographic features and campaign features.
