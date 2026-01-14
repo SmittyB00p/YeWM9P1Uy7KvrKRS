@@ -7,7 +7,7 @@ The purpose of this project is to determine whether a customer is going to subsc
 
 The data contains customer demographics such as age, marital status, job, balance, credit in default, etc., as well as campaign information that includes the last month that the bank contacted each customer, method of contact, the duration of the call for each customer and the number of times that the bank contacted each customer. Sensative customer data has been kept from the dataset for privacy reasons. 
 
-[![Term Deposit Video](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ)
+<!-- [![Term Deposit Video](https://img.youtube.com/vi/tyaM6dVxpLQ/0.jpg)](https://www.youtube.com/watch?v=tyaM6dVxpLQ) -->
 
 ### Main Goal:
 * Predict whether the customer will subscribe to the product, ideally reaching ~81% average accuracy score using 5-fold cross validation.
@@ -22,19 +22,19 @@ The data contains customer demographics such as age, marital status, job, balanc
 This project is structured so that most of the exploratory data analysis, model selection, and model experimentation are housed in the `Notebooks` folder. 
 
 ```
-- Notebooks
-    |
-    - EDA
-        |
-        - eda.ipynb (initial data exploration)
-        - customer_segmentation.ipynb (unsupervised learning techniques looking for customer segments)
-    |
-    - Models (sequence of models looked at)
-        |
-        - svm.ipynb
-        - logistic_regression.ipynb
-        - ensemble.ipynb
-        - final_model.ipynb (final model testing)
+|- Notebooks
+|    |
+|    |- EDA
+|    |   |
+|    |   |- eda.ipynb (initial data exploration)
+|    |   |- customer_segmentation.ipynb (customer segmentation via unsupervised learning)
+|    |
+|    |- Models (sequence of models looked at)
+|    |   |
+|    |   |- svm.ipynb
+|    |   |- logistic_regression.ipynb
+|    |   |- ensemble.ipynb
+|    |   |- final_model.ipynb (final model testing)
 ```
 
 ## Exploratory Data Analysis
