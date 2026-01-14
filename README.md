@@ -181,7 +181,8 @@ Achieved:
 * In regards to which feature makes the customers subscribe there is not a definitive answer that sticks out when looking at the features when grouped by each customer segment. Further exploration might need to be done to understand which features are playing a more integral role than others.
 
 
-* An interactive dashboard using Tableau can be found at this link: https://public.tableau.com/app/profile/tyler.smith5879/viz/Term_Deposit_Dashboard/TermDepositStory
+* An interactive dashboard using Tableau can be found at this link: 
+https://public.tableau.com/app/profile/tyler.smith5879/viz/modified_term_subscribers_dashboard/FinalStory
 
 ## Set-up
 * create a virtual environment (venv) with any name (customary to use .venv for virtual environemnt name): `python3.11 -m venv .venv`
